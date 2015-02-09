@@ -1,6 +1,6 @@
 import Foundation
 
-class Strings {
+class StringsFile {
     let URL: NSURL
     let dictionary: [String: String]
     

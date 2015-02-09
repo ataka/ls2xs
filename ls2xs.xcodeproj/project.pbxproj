@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7F9ABCD81A88E79100ACB4B9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ABCD71A88E79100ACB4B9 /* main.swift */; };
-		7F9ABCDF1A88E7A400ACB4B9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ABCDE1A88E7A400ACB4B9 /* Strings.swift */; };
-		7F9ABCEE1A88E7F500ACB4B9 /* StringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ABCED1A88E7F500ACB4B9 /* StringsTests.swift */; };
+		7F9ABCDF1A88E7A400ACB4B9 /* StringsFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ABCDE1A88E7A400ACB4B9 /* StringsFile.swift */; };
+		7F9ABCEE1A88E7F500ACB4B9 /* StringsFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ABCED1A88E7F500ACB4B9 /* StringsFileTests.swift */; };
 		7F9ABCF01A88E82100ACB4B9 /* Fixture.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F9ABCEF1A88E82100ACB4B9 /* Fixture.strings */; };
-		7F9ABCF11A88E84500ACB4B9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ABCDE1A88E7A400ACB4B9 /* Strings.swift */; };
+		7F9ABCF11A88E84500ACB4B9 /* StringsFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ABCDE1A88E7A400ACB4B9 /* StringsFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,10 +29,10 @@
 /* Begin PBXFileReference section */
 		7F9ABCD41A88E79100ACB4B9 /* ls2xs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ls2xs; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F9ABCD71A88E79100ACB4B9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		7F9ABCDE1A88E7A400ACB4B9 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		7F9ABCDE1A88E7A400ACB4B9 /* StringsFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringsFile.swift; sourceTree = "<group>"; };
 		7F9ABCE41A88E7D700ACB4B9 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F9ABCE71A88E7D700ACB4B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F9ABCED1A88E7F500ACB4B9 /* StringsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringsTests.swift; sourceTree = "<group>"; };
+		7F9ABCED1A88E7F500ACB4B9 /* StringsFileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringsFileTests.swift; sourceTree = "<group>"; };
 		7F9ABCEF1A88E82100ACB4B9 /* Fixture.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Fixture.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,7 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				7F9ABCD71A88E79100ACB4B9 /* main.swift */,
-				7F9ABCDE1A88E7A400ACB4B9 /* Strings.swift */,
+				7F9ABCDE1A88E7A400ACB4B9 /* StringsFile.swift */,
 			);
 			path = ls2xs;
 			sourceTree = "<group>";
@@ -84,7 +84,7 @@
 		7F9ABCE51A88E7D700ACB4B9 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				7F9ABCED1A88E7F500ACB4B9 /* StringsTests.swift */,
+				7F9ABCED1A88E7F500ACB4B9 /* StringsFileTests.swift */,
 				7F9ABCE61A88E7D700ACB4B9 /* Supporting Files */,
 			);
 			path = UnitTests;
@@ -187,7 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F9ABCDF1A88E7A400ACB4B9 /* Strings.swift in Sources */,
+				7F9ABCDF1A88E7A400ACB4B9 /* StringsFile.swift in Sources */,
 				7F9ABCD81A88E79100ACB4B9 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,8 +196,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F9ABCF11A88E84500ACB4B9 /* Strings.swift in Sources */,
-				7F9ABCEE1A88E7F500ACB4B9 /* StringsTests.swift in Sources */,
+				7F9ABCF11A88E84500ACB4B9 /* StringsFile.swift in Sources */,
+				7F9ABCEE1A88E7F500ACB4B9 /* StringsFileTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
