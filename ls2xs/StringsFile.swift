@@ -2,7 +2,7 @@ import Foundation
 
 class StringsFile {
     let URL: NSURL
-    let dictionary: [String: String]
+    var dictionary: [String: String]
     
     class func stringsFilesInDirectory(directoryURL: NSURL) -> [StringsFile] {
         var files = [StringsFile]()
@@ -40,5 +40,28 @@ class StringsFile {
         } else {
             return nil
         }
+    }
+    
+    func save() {
+        var string = ""
+        
+        for (key, value) in dictionary {
+            let escapedValue: String? = map(value) { character in
+                switch character {
+                case "\"": return "\\n"
+                case "\r": return "\\r"
+                case "\\": return "\\\\"
+                case "\"": return "\\\""
+                default:   return String(character)
+                }
+            }
+            
+            if let value = escapedValue {
+                string += "\"\(key)\" = \"\(value)\";\n"
+            }
+        }
+        
+        // TODO: handle error
+        string.writeToURL(URL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
     }
 }

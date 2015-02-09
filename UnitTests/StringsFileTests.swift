@@ -1,24 +1,23 @@
 import Cocoa
 import XCTest
 
-private let projectPath = NSFileManager.defaultManager().currentDirectoryPath
-private let fixturePath = projectPath.stringByAppendingPathComponent("UnitTests/Fixture.strings")
-private let projectURL = NSURL(fileURLWithPath: projectPath)!
-private let fixtureURL = NSURL(fileURLWithPath: fixturePath)!
-
 class StringsFileTests: XCTestCase {
     func testInitWithURL() {
+        let projectPath = NSFileManager.defaultManager().currentDirectoryPath
+        let fixturePath = projectPath.stringByAppendingPathComponent("Fixtures/Target.strings")
+        let fixtureURL = NSURL(fileURLWithPath: fixturePath)!
         let stringsFile = StringsFile(URL: fixtureURL)!
+        
         XCTAssertEqual(stringsFile.dictionary, [
-            "qCi-L7-NSA.normalTitle": "Button",
-            "veg-fi-Qyb.text": "Hello",
+            "qCi-L7-NSA.normalTitle": "button",
+            "veg-fi-Qyb.text": "hello",
         ])
     }
     
     func testEnumerateFilesUnderDirectory() {
+        let projectPath = NSFileManager.defaultManager().currentDirectoryPath
+        let projectURL = NSURL(fileURLWithPath: projectPath)!
         let files = StringsFile.stringsFilesInDirectory(projectURL)
-        let stringsFile = StringsFile(URL: fixtureURL)!
-        XCTAssertEqual(countElements(files), 1)
-        XCTAssertEqual(first(files)!.URL, stringsFile.URL)
+        XCTAssertEqual(countElements(files), 2)
     }
 }
