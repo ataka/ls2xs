@@ -15,7 +15,7 @@ if let URL = fileManager.lprojURLsInURL(inputURL).filter({ URL in URL.lastPathCo
     abort()
 }
 
-let lprojURLs = fileManager.lprojURLsInURL(inputURL)
+let lprojURLs = fileManager.lprojURLsInURL(inputURL).filter({ URL in URL != baseLprojURL })
 let xibURLs = fileManager.xibURLsInURL(baseLprojURL)
 let xibNames = xibURLs.map() { URL in
     URL.lastPathComponent!.stringByDeletingPathExtension
@@ -23,10 +23,6 @@ let xibNames = xibURLs.map() { URL in
 
 for xibURL in xibURLs {
     for lprojURL in lprojURLs {
-        if lprojURL == baseLprojURL {
-            continue
-        }
-
         let xibName = xibURL.lastPathComponent!.stringByDeletingPathExtension
         let destinationURL = lprojURL.URLByAppendingPathComponent("\(xibName).strings")
 
@@ -38,13 +34,9 @@ for xibURL in xibURLs {
     }
 }
 
-for URL in fileManager.lprojURLsInURL(inputURL) {
-    if URL.lastPathComponent == "Base.lproj" {
-        continue
-    }
-
-    if let localizableStringsFile = StringsFile(URL: URL.URLByAppendingPathComponent("Localizable.strings")) {
-        for stringsFile in StringsFile.stringsFilesInDirectory(URL) {
+for lprojURL in lprojURLs {
+    if let localizableStringsFile = StringsFile(URL: lprojURL.URLByAppendingPathComponent("Localizable.strings")) {
+        for stringsFile in StringsFile.stringsFilesInDirectory(lprojURL) {
             if stringsFile.URL == localizableStringsFile.URL {
                 continue
             }
