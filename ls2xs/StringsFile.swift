@@ -26,7 +26,6 @@ class StringsFile {
     }
     
     init?(URL: NSURL) {
-        // In Swift 1.1, stored properties must be initialized (radar://18216578).
         self.URL = NSURL()
         self.dictionary = (NSDictionary(contentsOfURL: URL) as? [String: String]) ?? [String: String]()
         
