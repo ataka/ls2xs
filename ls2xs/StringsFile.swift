@@ -18,7 +18,7 @@ class StringsFile {
     }
     
     init?(URL: NSURL) {
-        self.URL = NSURL()
+        self.URL = URL
         self.dictionary = (NSDictionary(contentsOfURL: URL) as? [String: String]) ?? [String: String]()
         
         if URL.pathExtension != "strings" {

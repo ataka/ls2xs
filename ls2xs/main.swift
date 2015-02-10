@@ -2,23 +2,28 @@ import Foundation
 
 // TODO: input
 let currentPath = NSFileManager.defaultManager().currentDirectoryPath
-let inputPath = currentPath.stringByAppendingPathComponent("Fixtures/Localizable.strings")
-let targetPath = currentPath.stringByAppendingPathComponent("Fixtures")
-
+let inputPath = currentPath.stringByAppendingPathComponent("DemoApp")
 let inputURL = NSURL(fileURLWithPath: inputPath)!
-let targetURL = NSURL(fileURLWithPath: targetPath)!
-let localizableStringsFile = StringsFile(URL: inputURL)!
+let fileManager = NSFileManager.defaultManager()
 
-for file in StringsFile.stringsFilesInDirectory(targetURL) {
-    if file.URL == inputURL {
+for URL in fileManager.lprojURLsInURL(inputURL) {
+    if URL.lastPathComponent?.stringByDeletingPathExtension == "Base" {
         continue
     }
-    
-    for (key, value) in file.dictionary {
-        if let newValue = localizableStringsFile.dictionary[value] {
-            file.dictionary[key] = newValue
+
+    if let localizableStringsFile = StringsFile(URL: URL.URLByAppendingPathComponent("Localizable.strings")) {
+        for stringsFile in StringsFile.stringsFilesInDirectory(URL) {
+            if stringsFile.URL == localizableStringsFile.URL {
+                continue
+            }
+
+            for (key, value) in stringsFile.dictionary {
+                if let newValue = localizableStringsFile.dictionary[value] {
+                    stringsFile.dictionary[key] = newValue
+                }
+            }
+            
+            stringsFile.save()
         }
     }
-    
-    file.save()
 }

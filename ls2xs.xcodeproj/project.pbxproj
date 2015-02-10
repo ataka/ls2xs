@@ -36,6 +36,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7F36165A1A89DF9200254E5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		7F36165C1A89DF9600254E5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7F9751321A89C90D005E27F8 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F9751351A89C90D005E27F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F9751361A89C90D005E27F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 			children = (
 				7F97513B1A89C90D005E27F8 /* Base */,
 				7F9751541A89CA11005E27F8 /* ja */,
+				7F36165A1A89DF9200254E5E /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 			children = (
 				7F9751401A89C90D005E27F8 /* Base */,
 				7F9751551A89CA11005E27F8 /* ja */,
+				7F36165C1A89DF9600254E5E /* en */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
