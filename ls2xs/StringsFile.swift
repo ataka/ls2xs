@@ -5,18 +5,10 @@ class StringsFile {
     var dictionary: [String: String]
     
     class func stringsFilesInDirectory(directoryURL: NSURL) -> [StringsFile] {
-        var files = [StringsFile]()
-        
         let fileManager = NSFileManager.defaultManager()
-        let enumerator = fileManager.enumeratorAtURL(directoryURL, includingPropertiesForKeys: [], options: .SkipsHiddenFiles) { URL, error in
-            if let error = error {
-                println("error: \(error)")
-                return false
-            }
-            return true
-        }
-        
-        while let URL = enumerator?.nextObject() as? NSURL {
+
+        var files = [StringsFile]()
+        for URL in fileManager.stringsURLsInURL(directoryURL) {
             if let file = StringsFile(URL: URL) {
                 files.append(file)
             }

@@ -16,8 +16,9 @@ class StringsFileTests: XCTestCase {
     
     func testEnumerateFilesUnderDirectory() {
         let projectPath = NSFileManager.defaultManager().currentDirectoryPath
-        let projectURL = NSURL(fileURLWithPath: projectPath)!
-        let files = StringsFile.stringsFilesInDirectory(projectURL)
+        let fixturePath = projectPath.stringByAppendingPathComponent("Fixtures")
+        let fixtureURL = NSURL(fileURLWithPath: fixturePath)!
+        let files = StringsFile.stringsFilesInDirectory(fixtureURL)
         XCTAssertEqual(count(files), 2)
     }
 }
