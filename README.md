@@ -1,3 +1,3 @@
 # LocalizableStrings2XibStrings
 
-![](https://github.com/ishkawa/LocalizableStrings2XibStrings/demo.gif)
+![](http://blog.ishkawa.org/assets/misc/demo.gif)
