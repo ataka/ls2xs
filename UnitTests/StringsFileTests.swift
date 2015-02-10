@@ -18,6 +18,6 @@ class StringsFileTests: XCTestCase {
         let projectPath = NSFileManager.defaultManager().currentDirectoryPath
         let projectURL = NSURL(fileURLWithPath: projectPath)!
         let files = StringsFile.stringsFilesInDirectory(projectURL)
-        XCTAssertEqual(countElements(files), 2)
+        XCTAssertEqual(count(files), 2)
     }
 }
