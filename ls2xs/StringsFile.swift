@@ -26,18 +26,10 @@ class StringsFile {
     }
     
     init?(URL: NSURL) {
-        // In Swift 1.1, stored properties must be initialized (radar://18216578).
-        self.URL = NSURL()
-        self.dictionary = [String: String]()
+        self.URL = URL
+        self.dictionary = (NSDictionary(contentsOfURL: URL) as? [String: String]) ?? [String: String]()
         
-        if URL.pathExtension? != "strings" {
-            return nil
-        }
-    
-        if let dictionary = NSDictionary(contentsOfURL: URL) as? [String: String] {
-            self.URL = URL
-            self.dictionary = dictionary
-        } else {
+        if URL.pathExtension != "strings" {
             return nil
         }
     }
