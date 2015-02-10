@@ -11,6 +11,7 @@
 		7F97513C1A89C90D005E27F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F97513A1A89C90D005E27F8 /* Main.storyboard */; };
 		7F97513E1A89C90D005E27F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F97513D1A89C90D005E27F8 /* Images.xcassets */; };
 		7F9751411A89C90D005E27F8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F97513F1A89C90D005E27F8 /* LaunchScreen.xib */; };
+		7F9751581A89CAB3005E27F8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F97515A1A89CAB3005E27F8 /* Localizable.strings */; };
 		7F9ABCD81A88E79100ACB4B9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ABCD71A88E79100ACB4B9 /* main.swift */; };
 		7F9ABCDF1A88E7A400ACB4B9 /* StringsFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ABCDE1A88E7A400ACB4B9 /* StringsFile.swift */; };
 		7F9ABCEE1A88E7F500ACB4B9 /* StringsFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ABCED1A88E7F500ACB4B9 /* StringsFileTests.swift */; };
@@ -40,6 +41,9 @@
 		7F9751401A89C90D005E27F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7F9751541A89CA11005E27F8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		7F9751551A89CA11005E27F8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		7F9751591A89CAB3005E27F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7F97515B1A89CAB8005E27F8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7F97515D1A89CBE0005E27F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7F9ABCD41A88E79100ACB4B9 /* ls2xs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ls2xs; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F9ABCD71A88E79100ACB4B9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7F9ABCDE1A88E7A400ACB4B9 /* StringsFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringsFile.swift; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				7F9751361A89C90D005E27F8 /* AppDelegate.swift */,
+				7F97515A1A89CAB3005E27F8 /* Localizable.strings */,
 				7F97513A1A89C90D005E27F8 /* Main.storyboard */,
 				7F97513F1A89C90D005E27F8 /* LaunchScreen.xib */,
 				7F97513D1A89C90D005E27F8 /* Images.xcassets */,
@@ -232,6 +237,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 7F9ABCCB1A88E79100ACB4B9;
 			productRefGroup = 7F9ABCD51A88E79100ACB4B9 /* Products */;
@@ -251,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F97513C1A89C90D005E27F8 /* Main.storyboard in Resources */,
+				7F9751581A89CAB3005E27F8 /* Localizable.strings in Resources */,
 				7F9751411A89C90D005E27F8 /* LaunchScreen.xib in Resources */,
 				7F97513E1A89C90D005E27F8 /* Images.xcassets in Resources */,
 			);
@@ -313,6 +320,16 @@
 				7F9751551A89CA11005E27F8 /* ja */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		7F97515A1A89CAB3005E27F8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7F9751591A89CAB3005E27F8 /* Base */,
+				7F97515B1A89CAB8005E27F8 /* ja */,
+				7F97515D1A89CBE0005E27F8 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
