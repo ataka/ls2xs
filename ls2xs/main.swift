@@ -15,11 +15,26 @@ if let URL = fileManager.lprojURLsInURL(inputURL).filter({ URL in URL.lastPathCo
     abort()
 }
 
-var xibNames = [String]()
+let lprojURLs = fileManager.lprojURLsInURL(inputURL)
+let xibURLs = fileManager.xibURLsInURL(baseLprojURL)
+let xibNames = xibURLs.map() { URL in
+    URL.lastPathComponent!.stringByDeletingPathExtension
+}
 
-for URL in fileManager.xibURLsInURL(baseLprojURL) {
-    if let name = URL.lastPathComponent?.stringByDeletingPathExtension {
-        xibNames.append(name)
+for xibURL in xibURLs {
+    for lprojURL in lprojURLs {
+        if lprojURL == baseLprojURL {
+            continue
+        }
+
+        let xibName = xibURL.lastPathComponent!.stringByDeletingPathExtension
+        let destinationURL = lprojURL.URLByAppendingPathComponent("\(xibName).strings")
+
+        let task = NSTask()
+        task.launchPath = "/usr/bin/ibtool"
+        task.arguments = [xibURL.path!, "--generate-strings-file", destinationURL.path!]
+        task.launch()
+        task.waitUntilExit()
     }
 }
 
@@ -34,7 +49,7 @@ for URL in fileManager.lprojURLsInURL(inputURL) {
                 continue
             }
 
-            let name = stringsFile.URL.lastPathComponent?.stringByDeletingPathExtension ?? ""
+            let name = stringsFile.URL.lastPathComponent!.stringByDeletingPathExtension
             if !contains(xibNames, name) {
                 continue
             }
