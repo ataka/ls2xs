@@ -19,18 +19,18 @@ A command line tool that updates .strings of .xib and .storyboard using Localiza
 Then, `ls2xc` replaces value of .strings with value of Localizable.strings if it matches key of Localizable.strings.
 
 
-### Example
+## Example
 
 Suppose Main.storyboard(Base) has UILabel (Object ID: 4gA-LI-pd8, text: "hello").
 
 
-#### Input
+### Input
 
 - Localizable.strings(en): `"hello" = "Hello";`
 - Localizable.strings(ja): `"hello" = "こんにちは";`
 
 
-#### Output
+### Output
 
 - Main.strings(en): `"4gA-LI-pd8.title" = "Hello";`
 - Main.strings(ja): `"4gA-LI-pd8.title" = "こんにちは";`
