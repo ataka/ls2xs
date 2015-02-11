@@ -58,22 +58,8 @@ func executeWithPath(path: String) {
     }
 }
 
-let helpOption = Option(trigger: .Mixed("h", "help"))
-let pathOption = Option(trigger: .Mixed("p", "path"), numberOfParameters: 1)
-
-let parser = OptionParser(definitions:[pathOption])
-let arguments = Array(Process.arguments[1..<Process.arguments.count])
-
-switch parser.parse(arguments) {
-case .Success(let box):
-    let (options, rest) = box.value
-    
-    if let path = options[pathOption]?.first {
-        executeWithPath(path)
-    } else {
-        println(parser.helpStringForCommandName("ls2xs"))
-    }
-
-case .Failure(let err):
-   println(err)
+if Process.arguments.count == 2 {
+    executeWithPath(Process.arguments[1])
+} else {
+    println("usage: ls2xs <path>")
 }
