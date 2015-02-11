@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F07CC731A8B94CB0065FA35 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F07CC6F1A8B94CB0065FA35 /* Core.swift */; };
+		7F07CC741A8B94CB0065FA35 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F07CC721A8B94CB0065FA35 /* Result.swift */; };
 		7F3616581A89DA8C00254E5E /* NSFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9751651A89D999005E27F8 /* NSFileManager.swift */; };
 		7F9751371A89C90D005E27F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9751361A89C90D005E27F8 /* AppDelegate.swift */; };
 		7F97513C1A89C90D005E27F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F97513A1A89C90D005E27F8 /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7F07CC6F1A8B94CB0065FA35 /* Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		7F07CC721A8B94CB0065FA35 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		7F36165A1A89DF9200254E5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7F36165C1A89DF9600254E5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7F9751321A89C90D005E27F8 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +89,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F07CC6E1A8B94CB0065FA35 /* OptionKit */ = {
+			isa = PBXGroup;
+			children = (
+				7F07CC6F1A8B94CB0065FA35 /* Core.swift */,
+				7F07CC721A8B94CB0065FA35 /* Result.swift */,
+			);
+			name = OptionKit;
+			path = OptionKit/OptionKit;
+			sourceTree = "<group>";
+		};
 		7F9751331A89C90D005E27F8 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +127,7 @@
 				7F9ABCE51A88E7D700ACB4B9 /* UnitTests */,
 				7F9ABCF21A88F93400ACB4B9 /* Fixtures */,
 				7F9751331A89C90D005E27F8 /* DemoApp */,
+				7F07CC6E1A8B94CB0065FA35 /* OptionKit */,
 				7F9ABCD51A88E79100ACB4B9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -295,7 +310,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F9751661A89D999005E27F8 /* NSFileManager.swift in Sources */,
+				7F07CC741A8B94CB0065FA35 /* Result.swift in Sources */,
 				7F9ABCDF1A88E7A400ACB4B9 /* StringsFile.swift in Sources */,
+				7F07CC731A8B94CB0065FA35 /* Core.swift in Sources */,
 				7F9ABCD81A88E79100ACB4B9 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
