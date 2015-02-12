@@ -11,6 +11,7 @@ A command line tool that updates .strings of .xib and .storyboard using Localiza
 - Add Localizable.strings for each languages.
 - Set keys of Localizable.strings to text values in .xib or .storyboard, as you set them to NSLocalizedString("key", "comment") in code.
 - Add "New Run Script Phase" to "Build Phases" of your application target, and set contents: 
+
 ```shell
 /path/to/ls2xs $TARGET_NAME
 ```
