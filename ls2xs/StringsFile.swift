@@ -5,10 +5,9 @@ class StringsFile {
     var dictionary: [String: String]
     
     class func stringsFilesInDirectory(directoryURL: NSURL) -> [StringsFile] {
-        let fileManager = NSFileManager.defaultManager()
-
         var files = [StringsFile]()
-        for URL in fileManager.stringsURLsInURL(directoryURL) {
+        
+        for URL in NSFileManager.defaultManager().stringsURLsInURL(directoryURL) {
             if let file = StringsFile(URL: URL) {
                 files.append(file)
             }

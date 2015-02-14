@@ -21,6 +21,8 @@
 		7F9ABCF11A88E84500ACB4B9 /* StringsFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ABCDE1A88E7A400ACB4B9 /* StringsFile.swift */; };
 		7F9ABCF51A88F93400ACB4B9 /* Target.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F9ABCF31A88F93400ACB4B9 /* Target.strings */; };
 		7F9ABCF61A88F93400ACB4B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F9ABCF41A88F93400ACB4B9 /* Localizable.strings */; };
+		7FF59A221A8F1D5C00946EBF /* LprojFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF59A211A8F1D5C00946EBF /* LprojFile.swift */; };
+		7FF59A241A8F231B00946EBF /* XibFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF59A231A8F231B00946EBF /* XibFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +60,8 @@
 		7F9ABCED1A88E7F500ACB4B9 /* StringsFileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringsFileTests.swift; sourceTree = "<group>"; };
 		7F9ABCF31A88F93400ACB4B9 /* Target.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Target.strings; sourceTree = "<group>"; };
 		7F9ABCF41A88F93400ACB4B9 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		7FF59A211A8F1D5C00946EBF /* LprojFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LprojFile.swift; sourceTree = "<group>"; };
+		7FF59A231A8F231B00946EBF /* XibFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 			children = (
 				7F9ABCD71A88E79100ACB4B9 /* main.swift */,
 				7F9ABCDE1A88E7A400ACB4B9 /* StringsFile.swift */,
+				7FF59A211A8F1D5C00946EBF /* LprojFile.swift */,
+				7FF59A231A8F231B00946EBF /* XibFile.swift */,
 				7F9751651A89D999005E27F8 /* NSFileManager.swift */,
 			);
 			path = ls2xs;
@@ -295,6 +301,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F9751661A89D999005E27F8 /* NSFileManager.swift in Sources */,
+				7FF59A221A8F1D5C00946EBF /* LprojFile.swift in Sources */,
+				7FF59A241A8F231B00946EBF /* XibFile.swift in Sources */,
 				7F9ABCDF1A88E7A400ACB4B9 /* StringsFile.swift in Sources */,
 				7F9ABCD81A88E79100ACB4B9 /* main.swift in Sources */,
 			);
