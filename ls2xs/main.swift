@@ -20,22 +20,17 @@ func executeWithPath(path: String) {
     
     for lprojFile in lprojFiles.filter({ $0.URL != baseLprojFile.URL }) {
         if let localizableStringsFile = lprojFile.localizableStringsFile {
-            for stringsFile in StringsFile.stringsFilesInDirectory(lprojFile.URL) {
-                if stringsFile.URL == localizableStringsFile.URL {
-                    continue
-                }
-                
-                let name = stringsFile.URL.lastPathComponent!.stringByDeletingPathExtension
-                if !contains(xibNames, name) {
-                    continue
-                }
-                
+            let stringsFiles = StringsFile.stringsFilesInDirectory(lprojFile.URL).filter(){ stringsFile in
+                stringsFile.URL != localizableStringsFile.URL &&
+                contains(xibNames, stringsFile.URL.lastPathComponent!.stringByDeletingPathExtension)
+            }
+            
+            for stringsFile in StringsFile.stringsFilesInDirectory(lprojFile.URL).filter({ $0.URL != localizableStringsFile.URL }) {
                 for (key, value) in stringsFile.dictionary {
                     if let newValue = localizableStringsFile.dictionary[value] {
                         stringsFile.dictionary[key] = newValue
                     }
                 }
-                
                 stringsFile.save()
             }
         }
