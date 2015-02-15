@@ -15,6 +15,11 @@ class LprojFile {
         return xibFiles
     }
     
+    var localizableStringsFile: StringsFile? {
+        let stringsURL = URL.URLByAppendingPathComponent("Localizable.strings")
+        return StringsFile(URL: stringsURL)
+    }
+    
     class func baseLprojInURL(URL: NSURL) -> LprojFile? {
         if let URL = NSFileManager.defaultManager().lprojURLsInURL(URL).filter({ URL in URL.lastPathComponent == "Base.lproj" }).first {
             return LprojFile(URL: URL)

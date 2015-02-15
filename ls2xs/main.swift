@@ -19,7 +19,7 @@ func executeWithPath(path: String) {
     }
     
     for lprojFile in lprojFiles.filter({ $0.URL != baseLprojFile.URL }) {
-        if let localizableStringsFile = StringsFile(URL: lprojFile.URL.URLByAppendingPathComponent("Localizable.strings")) {
+        if let localizableStringsFile = lprojFile.localizableStringsFile {
             for stringsFile in StringsFile.stringsFilesInDirectory(lprojFile.URL) {
                 if stringsFile.URL == localizableStringsFile.URL {
                     continue
