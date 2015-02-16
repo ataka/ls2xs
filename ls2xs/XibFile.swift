@@ -26,6 +26,8 @@ class XibFile {
     }
     
     func generateStringsInLprojFile(lprojFile: LprojFile) {
+        println("generate .strings for \(URL.path!)")
+        
         let destinationURL = lprojFile.URL.URLByAppendingPathComponent("\(name).strings")
         let task = NSTask()
         task.launchPath = "/usr/bin/ibtool"

@@ -26,6 +26,8 @@ class StringsFile {
     }
     
     func save() {
+        println("update \(URL.path!)")
+        
         var string = ""
         
         for (key, value) in dictionary {
