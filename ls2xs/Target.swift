@@ -45,7 +45,7 @@ class Target {
         let xibNames = baseLprojFile.xibFiles.map({ $0.name })
         for xibFile in baseLprojFile.xibFiles {
             for lprojFile in langLprojFiles {
-                println("generating .strings for \(URL.path!)")
+                println("generating .strings for \(lprojFile.URL.path!)/\(xibFile.name).strings")
                 xibFile.generateStringsInLprojFile(lprojFile)
             }
         }
@@ -53,7 +53,7 @@ class Target {
         for lprojFile in langLprojFiles {
             if let localizableStringsFile = lprojFile.localizableStringsFile {
                 for stringsFile in lprojFile.stringsFilesForXibNames(xibNames) {
-                    println("updating \(URL.path!)")
+                    println("updating \(stringsFile.URL.path!)")
                     stringsFile.updateValuesUsingLocalizableStringsFile(localizableStringsFile)
                     stringsFile.save()
                 }
@@ -61,5 +61,7 @@ class Target {
                 println("warning: Localizable.strings is not found in \(lprojFile.URL.path!)")
             }
         }
+
+        println("done.")
     }
 }

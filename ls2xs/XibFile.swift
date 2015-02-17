@@ -8,7 +8,7 @@ class XibFile {
         self.URL = URL
         self.name = URL.lastPathComponent?.stringByDeletingPathExtension ?? ""
         
-        if URL.pathExtension != "xib" || self.name.isEmpty {
+        if (URL.pathExtension != "xib" && URL.pathExtension != "storyboard") || self.name.isEmpty {
             return nil
         }
     }

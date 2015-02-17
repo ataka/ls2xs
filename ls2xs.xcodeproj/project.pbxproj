@@ -26,18 +26,6 @@
 		7FF59A241A8F231B00946EBF /* XibFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF59A231A8F231B00946EBF /* XibFile.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		7F9ABCD21A88E79100ACB4B9 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		7F36165A1A89DF9200254E5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7F36165C1A89DF9600254E5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -198,7 +186,6 @@
 			buildPhases = (
 				7F9ABCD01A88E79100ACB4B9 /* Sources */,
 				7F9ABCD11A88E79100ACB4B9 /* Frameworks */,
-				7F9ABCD21A88E79100ACB4B9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
