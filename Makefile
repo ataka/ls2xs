@@ -1,5 +1,6 @@
 prefix_install:
 	xcodebuild -scheme ls2xs
+	mkdir -p $(PREFIX)/bin
 	cp -f build/Release/ls2xs $(PREFIX)/bin/
 
 test:
