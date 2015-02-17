@@ -2,6 +2,7 @@ import Foundation
 
 class LprojFile {
     let URL: NSURL
+    let name: String
     
     var xibFiles: [XibFile] {
         var xibFiles =  [XibFile]()
@@ -54,8 +55,9 @@ class LprojFile {
     
     init?(URL: NSURL) {
         self.URL = URL
+        self.name = URL.lastPathComponent?.stringByDeletingPathExtension ?? ""
         
-        if URL.pathExtension != "lproj" {
+        if URL.pathExtension != "lproj" || self.name.isEmpty {
             return nil
         }
     }
