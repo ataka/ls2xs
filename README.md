@@ -1,4 +1,6 @@
-# LocalizableStrings2XibStrings [![Circle CI](https://circleci.com/gh/ishkawa/LocalizableStrings2XibStrings.svg?style=svg)](https://circleci.com/gh/ishkawa/LocalizableStrings2XibStrings)
+# LocalizableStrings2XibStrings
+
+[![Circle CI](https://circleci.com/gh/ishkawa/LocalizableStrings2XibStrings.svg?style=svg)](https://circleci.com/gh/ishkawa/LocalizableStrings2XibStrings)
 
 A command line tool that updates .strings of .xib and .storyboard using Localizable.strings.
 
