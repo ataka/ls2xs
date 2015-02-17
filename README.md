@@ -6,6 +6,12 @@ A command line tool that updates .strings of .xib and .storyboard using Localiza
 
 ![](http://blog.ishkawa.org/assets/misc/ls2xs.gif)
 
+## Installation
+
+```
+brew install ishkawa/formulae/ls2xs
+```
+
 
 ## Usage
 
@@ -15,7 +21,7 @@ A command line tool that updates .strings of .xib and .storyboard using Localiza
 - Add "New Run Script Phase" to "Build Phases" of your application target, and set contents: 
 
 ```shell
-/path/to/ls2xs $TARGET_NAME
+/usr/local/bin/ls2xs $TARGET_NAME
 ```
 
 `ls2xc` generates .strings for .xib and .storyboard using `ibtool --generate-strings-file`.
