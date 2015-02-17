@@ -2,13 +2,15 @@ import Foundation
 
 class StringsFile {
     let URL: NSURL
+    let name: String
     var dictionary: [String: String]
     
     init?(URL: NSURL) {
         self.URL = URL
+        self.name = URL.lastPathComponent?.stringByDeletingPathExtension ?? ""
         self.dictionary = (NSDictionary(contentsOfURL: URL) as? [String: String]) ?? [String: String]()
         
-        if URL.pathExtension != "strings" {
+        if URL.pathExtension != "strings" || self.name.isEmpty {
             return nil
         }
     }

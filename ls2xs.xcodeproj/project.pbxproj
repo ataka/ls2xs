@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F0A6CEF1A932B7D007CF9D8 /* LprojFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A6CEE1A932B7D007CF9D8 /* LprojFileTests.swift */; };
+		7F0A6CF11A932D24007CF9D8 /* StringsFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A6CF01A932D24007CF9D8 /* StringsFileTests.swift */; };
 		7F3616581A89DA8C00254E5E /* NSFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9751651A89D999005E27F8 /* NSFileManager.swift */; };
 		7F96F2181A931753001F50EE /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F96F2171A931753001F50EE /* Target.swift */; };
 		7F96F21C1A931F48001F50EE /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F96F2171A931753001F50EE /* Target.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F0A6CEE1A932B7D007CF9D8 /* LprojFileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LprojFileTests.swift; sourceTree = "<group>"; };
+		7F0A6CF01A932D24007CF9D8 /* StringsFileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringsFileTests.swift; sourceTree = "<group>"; };
 		7F36165A1A89DF9200254E5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7F36165C1A89DF9600254E5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7F96F2171A931753001F50EE /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				7F9ABCED1A88E7F500ACB4B9 /* TargetTests.swift */,
+				7F0A6CEE1A932B7D007CF9D8 /* LprojFileTests.swift */,
+				7F0A6CF01A932D24007CF9D8 /* StringsFileTests.swift */,
 				7F9ABCE61A88E7D700ACB4B9 /* Supporting Files */,
 			);
 			path = UnitTests;
@@ -306,11 +312,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F0A6CEF1A932B7D007CF9D8 /* LprojFileTests.swift in Sources */,
 				7F9ABCF11A88E84500ACB4B9 /* StringsFile.swift in Sources */,
 				7F9ABCEE1A88E7F500ACB4B9 /* TargetTests.swift in Sources */,
 				7F3616581A89DA8C00254E5E /* NSFileManager.swift in Sources */,
 				7F9751641A89D8CF005E27F8 /* main.swift in Sources */,
 				7F96F21E1A931F48001F50EE /* XibFile.swift in Sources */,
+				7F0A6CF11A932D24007CF9D8 /* StringsFileTests.swift in Sources */,
 				7F96F21C1A931F48001F50EE /* Target.swift in Sources */,
 				7F96F21D1A931F48001F50EE /* LprojFile.swift in Sources */,
 			);
