@@ -25,8 +25,6 @@
 		7F9ABCDF1A88E7A400ACB4B9 /* StringsFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ABCDE1A88E7A400ACB4B9 /* StringsFile.swift */; };
 		7F9ABCEE1A88E7F500ACB4B9 /* TargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ABCED1A88E7F500ACB4B9 /* TargetTests.swift */; };
 		7F9ABCF11A88E84500ACB4B9 /* StringsFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9ABCDE1A88E7A400ACB4B9 /* StringsFile.swift */; };
-		7F9ABCF51A88F93400ACB4B9 /* Target.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F9ABCF31A88F93400ACB4B9 /* Target.strings */; };
-		7F9ABCF61A88F93400ACB4B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F9ABCF41A88F93400ACB4B9 /* Localizable.strings */; };
 		7FF59A221A8F1D5C00946EBF /* LprojFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF59A211A8F1D5C00946EBF /* LprojFile.swift */; };
 		7FF59A241A8F231B00946EBF /* XibFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF59A231A8F231B00946EBF /* XibFile.swift */; };
 /* End PBXBuildFile section */
@@ -55,8 +53,6 @@
 		7F9ABCE41A88E7D700ACB4B9 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F9ABCE71A88E7D700ACB4B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F9ABCED1A88E7F500ACB4B9 /* TargetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTests.swift; sourceTree = "<group>"; };
-		7F9ABCF31A88F93400ACB4B9 /* Target.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Target.strings; sourceTree = "<group>"; };
-		7F9ABCF41A88F93400ACB4B9 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		7FF59A211A8F1D5C00946EBF /* LprojFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LprojFile.swift; sourceTree = "<group>"; };
 		7FF59A231A8F231B00946EBF /* XibFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,7 +108,6 @@
 			children = (
 				7F9ABCD61A88E79100ACB4B9 /* ls2xs */,
 				7F9ABCE51A88E7D700ACB4B9 /* UnitTests */,
-				7F9ABCF21A88F93400ACB4B9 /* Fixtures */,
 				7F9751331A89C90D005E27F8 /* DemoApp */,
 				7F9ABCD51A88E79100ACB4B9 /* Products */,
 			);
@@ -158,15 +153,6 @@
 				7F9ABCE71A88E7D700ACB4B9 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		7F9ABCF21A88F93400ACB4B9 /* Fixtures */ = {
-			isa = PBXGroup;
-			children = (
-				7F9ABCF31A88F93400ACB4B9 /* Target.strings */,
-				7F9ABCF41A88F93400ACB4B9 /* Localizable.strings */,
-			);
-			path = Fixtures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,8 +265,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F9ABCF51A88F93400ACB4B9 /* Target.strings in Resources */,
-				7F9ABCF61A88F93400ACB4B9 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
