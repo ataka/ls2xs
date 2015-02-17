@@ -8,5 +8,4 @@ dependencies:
 
 test:
   override:
-    - rake cidebug
     - make test && cp build/test-report.xml $CIRCLE_TEST_REPORTS
