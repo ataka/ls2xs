@@ -6,13 +6,25 @@ class LprojFile {
     var xibFiles: [XibFile] {
         var xibFiles =  [XibFile]()
         
-        for xibURL in NSFileManager.defaultManager().xibURLsInURL(URL) {
+        for xibURL in NSFileManager.defaultManager().fileURLsInURL(URL) {
             if let xibFile = XibFile(URL: xibURL) {
                 xibFiles.append(xibFile)
             }
         }
         
         return xibFiles
+    }
+
+    var stringsFiles: [StringsFile] {
+        var stringsFiles =  [StringsFile]()
+
+        for xibURL in NSFileManager.defaultManager().fileURLsInURL(URL) {
+            if let stringsFile = StringsFile(URL: xibURL) {
+                stringsFiles.append(stringsFile)
+            }
+        }
+        
+        return stringsFiles
     }
     
     var localizableStringsFile: StringsFile? {
@@ -21,7 +33,7 @@ class LprojFile {
     }
     
     class func baseLprojInURL(URL: NSURL) -> LprojFile? {
-        if let URL = NSFileManager.defaultManager().lprojURLsInURL(URL).filter({ URL in URL.lastPathComponent == "Base.lproj" }).first {
+        if let URL = NSFileManager.defaultManager().fileURLsInURL(URL).filter({ URL in URL.lastPathComponent == "Base.lproj" }).first {
             return LprojFile(URL: URL)
         } else {
             return nil
@@ -31,7 +43,7 @@ class LprojFile {
     class func lprojFilesInURL(directoryURL: NSURL) -> [LprojFile] {
         var files = [LprojFile]()
         
-        for URL in NSFileManager.defaultManager().lprojURLsInURL(directoryURL) {
+        for URL in NSFileManager.defaultManager().fileURLsInURL(directoryURL) {
             if let file = LprojFile(URL: URL) {
                 files.append(file)
             }
@@ -48,4 +60,9 @@ class LprojFile {
         }
     }
     
+    func stringsFilesForXibNames(xibNames: [String]) -> [StringsFile] {
+        return stringsFiles.filter(){ stringsFile in
+            contains(xibNames, stringsFile.URL.lastPathComponent!.stringByDeletingPathExtension)
+        }
+    }
 }

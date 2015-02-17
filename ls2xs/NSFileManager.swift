@@ -19,22 +19,4 @@ extension NSFileManager {
         return URLs
 
     }
-
-    func lprojURLsInURL(parentURL: NSURL) -> [NSURL] {
-        return fileURLsInURL(parentURL).filter() { URL in
-            URL.pathExtension == "lproj"
-        }
-    }
-
-    func xibURLsInURL(parentURL: NSURL) -> [NSURL] {
-        return fileURLsInURL(parentURL).filter() { URL in
-            URL.pathExtension == "xib" || URL.pathExtension == "storyboard"
-        }
-    }
-
-    func stringsURLsInURL(parentURL: NSURL) -> [NSURL] {
-        return fileURLsInURL(parentURL).filter() { URL in
-            URL.pathExtension == "strings"
-        }
-    }
 }

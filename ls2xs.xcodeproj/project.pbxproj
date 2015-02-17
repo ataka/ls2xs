@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F3616581A89DA8C00254E5E /* NSFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9751651A89D999005E27F8 /* NSFileManager.swift */; };
+		7F96F2181A931753001F50EE /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F96F2171A931753001F50EE /* Target.swift */; };
 		7F9751371A89C90D005E27F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9751361A89C90D005E27F8 /* AppDelegate.swift */; };
 		7F97513C1A89C90D005E27F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F97513A1A89C90D005E27F8 /* Main.storyboard */; };
 		7F97513E1A89C90D005E27F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F97513D1A89C90D005E27F8 /* Images.xcassets */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		7F36165A1A89DF9200254E5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7F36165C1A89DF9600254E5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		7F96F2171A931753001F50EE /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
 		7F9751321A89C90D005E27F8 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F9751351A89C90D005E27F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F9751361A89C90D005E27F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,8 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				7F9ABCD71A88E79100ACB4B9 /* main.swift */,
-				7F9ABCDE1A88E7A400ACB4B9 /* StringsFile.swift */,
+				7F96F2171A931753001F50EE /* Target.swift */,
 				7FF59A211A8F1D5C00946EBF /* LprojFile.swift */,
+				7F9ABCDE1A88E7A400ACB4B9 /* StringsFile.swift */,
 				7FF59A231A8F231B00946EBF /* XibFile.swift */,
 				7F9751651A89D999005E27F8 /* NSFileManager.swift */,
 			);
@@ -304,6 +307,7 @@
 				7FF59A221A8F1D5C00946EBF /* LprojFile.swift in Sources */,
 				7FF59A241A8F231B00946EBF /* XibFile.swift in Sources */,
 				7F9ABCDF1A88E7A400ACB4B9 /* StringsFile.swift in Sources */,
+				7F96F2181A931753001F50EE /* Target.swift in Sources */,
 				7F9ABCD81A88E79100ACB4B9 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

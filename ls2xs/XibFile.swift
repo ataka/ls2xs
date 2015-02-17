@@ -4,18 +4,6 @@ class XibFile {
     let URL: NSURL
     let name: String
     
-    class func xibFilesInURL(directoryURL: NSURL) -> [XibFile] {
-        var files = [XibFile]()
-        
-        for URL in NSFileManager.defaultManager().xibURLsInURL(directoryURL) {
-            if let file = XibFile(URL: URL) {
-                files.append(file)
-            }
-        }
-        
-        return files
-    }
-    
     init?(URL: NSURL) {
         self.URL = URL
         self.name = URL.lastPathComponent?.stringByDeletingPathExtension ?? ""
@@ -26,8 +14,6 @@ class XibFile {
     }
     
     func generateStringsInLprojFile(lprojFile: LprojFile) {
-        println("generate .strings for \(URL.path!)")
-        
         let destinationURL = lprojFile.URL.URLByAppendingPathComponent("\(name).strings")
         let task = NSTask()
         task.launchPath = "/usr/bin/ibtool"

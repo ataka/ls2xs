@@ -4,18 +4,6 @@ class StringsFile {
     let URL: NSURL
     var dictionary: [String: String]
     
-    class func stringsFilesInDirectory(directoryURL: NSURL) -> [StringsFile] {
-        var files = [StringsFile]()
-        
-        for URL in NSFileManager.defaultManager().stringsURLsInURL(directoryURL) {
-            if let file = StringsFile(URL: URL) {
-                files.append(file)
-            }
-        }
-        
-        return files
-    }
-    
     init?(URL: NSURL) {
         self.URL = URL
         self.dictionary = (NSDictionary(contentsOfURL: URL) as? [String: String]) ?? [String: String]()
@@ -24,10 +12,16 @@ class StringsFile {
             return nil
         }
     }
-    
+
+    func updateValuesUsingLocalizableStringsFile(localizableStringsFile: StringsFile) {
+        for (key, value) in dictionary {
+            if let newValue = localizableStringsFile.dictionary[value] {
+                dictionary[key] = newValue
+            }
+        }
+    }
+
     func save() {
-        println("update \(URL.path!)")
-        
         var string = ""
         
         for (key, value) in dictionary {
