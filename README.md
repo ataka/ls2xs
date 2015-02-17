@@ -1,6 +1,6 @@
-# LocalizableStrings2XibStrings
+# ls2xs
 
-[![Circle CI](https://circleci.com/gh/ishkawa/LocalizableStrings2XibStrings.svg?style=svg)](https://circleci.com/gh/ishkawa/LocalizableStrings2XibStrings)
+[![Circle CI](https://circleci.com/gh/ishkawa/ls2xs.svg?style=svg)](https://circleci.com/gh/ishkawa/ls2xs)
 
 A command line tool that updates .strings of .xib and .storyboard using Localizable.strings.
 
