@@ -36,7 +36,7 @@ class Target {
         }
 
         if baseLprojFile == nil {
-            println("could not find Base.lproj in \(URL.path!)")
+            println("error: could not find Base.lproj in \(URL.path!)")
             return nil
         }
     }
