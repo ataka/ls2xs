@@ -1,6 +1,6 @@
 # ls2xs
 
-[![Circle CI](https://img.shields.io/circleci/project/BrightFlair/PHP.Gt/master.svg?style=flat)](https://circleci.com/gh/ishkawa/ls2xs/tree/master)
+[![Circle CI](https://img.shields.io/circleci/project/ishkawa/ls2xs/master.svg?style=flat)](https://circleci.com/gh/ishkawa/ls2xs/tree/master)
 
 
 A command line tool that updates .strings of .xib and .storyboard using Localizable.strings.
