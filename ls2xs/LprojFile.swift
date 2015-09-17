@@ -55,7 +55,7 @@ class LprojFile {
     
     init?(URL: NSURL) {
         self.URL = URL
-        self.name = URL.lastPathComponent?.stringByDeletingPathExtension ?? ""
+        self.name = URL.URLByDeletingPathExtension?.lastPathComponent ?? ""
         
         if URL.pathExtension != "lproj" || self.name.isEmpty {
             return nil
@@ -64,7 +64,7 @@ class LprojFile {
     
     func stringsFilesForXibNames(xibNames: [String]) -> [StringsFile] {
         return stringsFiles.filter(){ stringsFile in
-            xibNames.contains(stringsFile.URL.lastPathComponent!.stringByDeletingPathExtension)
+            xibNames.contains((stringsFile.URL.URLByDeletingPathExtension?.lastPathComponent)!)
         }
     }
 }

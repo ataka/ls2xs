@@ -27,8 +27,8 @@ class Target {
 
     init?(path: String) {
         let currentPath = NSFileManager.defaultManager().currentDirectoryPath
-        let inputPath = currentPath.stringByAppendingPathComponent(path)
-        URL = NSURL(fileURLWithPath: inputPath)
+        let inputPath = NSURL(string: currentPath)?.URLByAppendingPathComponent(path)
+        URL = inputPath
 
         if URL == nil {
             print("error: passed invalid path.")
