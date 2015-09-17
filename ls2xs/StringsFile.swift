@@ -7,7 +7,7 @@ class StringsFile {
     
     init?(URL: NSURL) {
         self.URL = URL
-        self.name = URL.lastPathComponent?.stringByDeletingPathExtension ?? ""
+        self.name = URL.URLByDeletingPathExtension?.lastPathComponent ?? ""
         self.dictionary = (NSDictionary(contentsOfURL: URL) as? [String: String]) ?? [String: String]()
         
         if URL.pathExtension != "strings" || self.name.isEmpty {
