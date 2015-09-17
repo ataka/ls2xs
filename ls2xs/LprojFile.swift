@@ -64,7 +64,7 @@ class LprojFile {
     
     func stringsFilesForXibNames(xibNames: [String]) -> [StringsFile] {
         return stringsFiles.filter(){ stringsFile in
-            contains(xibNames, stringsFile.URL.lastPathComponent!.stringByDeletingPathExtension)
+            xibNames.contains(stringsFile.URL.lastPathComponent!.stringByDeletingPathExtension)
         }
     }
 }

@@ -27,7 +27,7 @@ class StringsFile {
         var string = ""
         
         for (key, value) in dictionary {
-            let escapedValue: String? = map(value) { character in
+            let escapedValue: String? = Optional(value).map { character in
                 switch character {
                 case "\"": return "\\n"
                 case "\r": return "\\r"
@@ -42,7 +42,10 @@ class StringsFile {
             }
         }
         
-        // TODO: handle error
-        string.writeToURL(URL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        do {
+            // TODO: handle error
+            try string.writeToURL(URL, atomically: true, encoding: NSUTF8StringEncoding)
+        } catch _ {
+        }
     }
 }

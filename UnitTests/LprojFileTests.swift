@@ -8,7 +8,7 @@ class LprojFileTests: XCTestCase {
         super.setUp()
 
         let path = NSFileManager.defaultManager().currentDirectoryPath.stringByAppendingPathComponent("DemoApp/Base.lproj")
-        let URL = NSURL(fileURLWithPath: path)!
+        let URL = NSURL(fileURLWithPath: path)
         lprojFile = LprojFile(URL: URL)
     }
 

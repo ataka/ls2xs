@@ -5,7 +5,7 @@ extension NSFileManager {
         let fileManager = NSFileManager.defaultManager()
         let enumerator = fileManager.enumeratorAtURL(URL, includingPropertiesForKeys: [], options: .SkipsHiddenFiles) { URL, error in
             if let error = error {
-                println("error: \(error)")
+                print("error: \(error)")
                 return false
             }
             return true

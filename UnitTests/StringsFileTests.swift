@@ -9,7 +9,7 @@ class StringsFileTests: XCTestCase {
         super.setUp()
 
         let directoryPath = NSFileManager.defaultManager().currentDirectoryPath.stringByAppendingPathComponent("DemoApp")
-        let directoryURL = NSURL(fileURLWithPath: directoryPath)!
+        let directoryURL = NSURL(fileURLWithPath: directoryPath)
         localizableStringsFile = StringsFile(URL: directoryURL.URLByAppendingPathComponent("en.lproj/Localizable.strings"))
         xibStringsFile = StringsFile(URL: directoryURL.URLByAppendingPathComponent("en.lproj/Main.strings"))
     }
