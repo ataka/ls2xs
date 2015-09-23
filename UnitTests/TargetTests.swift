@@ -6,6 +6,11 @@ class TargetTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
+        
+        let cwd = NSProcessInfo.processInfo().environment["MY_SOURCE_ROOT"]
+        let fileManager = NSFileManager()
+        fileManager.changeCurrentDirectoryPath(cwd!)
+        
         target = Target(path: "DemoApp")
     }
 
