@@ -7,7 +7,7 @@ class StringsFile {
     
     init?(URL: NSURL) {
         self.URL = URL
-        self.name = URL.lastPathComponent?.stringByDeletingPathExtension ?? ""
+        self.name = URL.URLByDeletingPathExtension?.lastPathComponent ?? ""
         self.dictionary = (NSDictionary(contentsOfURL: URL) as? [String: String]) ?? [String: String]()
         
         if URL.pathExtension != "strings" || self.name.isEmpty {
@@ -27,7 +27,7 @@ class StringsFile {
         var string = ""
         
         for (key, value) in dictionary {
-            let escapedValue: String? = map(value) { character in
+            let escapedValue: String? = Optional(value).map { character in
                 switch character {
                 case "\"": return "\\n"
                 case "\r": return "\\r"
@@ -42,7 +42,10 @@ class StringsFile {
             }
         }
         
-        // TODO: handle error
-        string.writeToURL(URL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        do {
+            // TODO: handle error
+            try string.writeToURL(URL, atomically: true, encoding: NSUTF8StringEncoding)
+        } catch _ {
+        }
     }
 }

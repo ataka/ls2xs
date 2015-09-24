@@ -27,16 +27,16 @@ class Target {
 
     init?(path: String) {
         let currentPath = NSFileManager.defaultManager().currentDirectoryPath
-        let inputPath = currentPath.stringByAppendingPathComponent(path)
-        URL = NSURL(fileURLWithPath: inputPath)!
+        let inputPath = NSURL(string: currentPath)?.URLByAppendingPathComponent(path)
+        URL = inputPath
 
         if URL == nil {
-            println("error: passed invalid path.")
+            print("error: passed invalid path.")
             return nil
         }
 
         if baseLprojFile == nil {
-            println("error: could not find Base.lproj in \(URL.path!)")
+            print("error: could not find Base.lproj in \(URL.path!)")
             return nil
         }
     }
@@ -45,7 +45,7 @@ class Target {
         let xibNames = baseLprojFile.xibFiles.map({ $0.name })
         for xibFile in baseLprojFile.xibFiles {
             for lprojFile in langLprojFiles {
-                println("generating .strings for \(lprojFile.URL.path!)/\(xibFile.name).strings")
+                print("generating .strings for \(lprojFile.URL.path!)/\(xibFile.name).strings")
                 xibFile.generateStringsInLprojFile(lprojFile)
             }
         }
@@ -53,15 +53,15 @@ class Target {
         for lprojFile in langLprojFiles {
             if let localizableStringsFile = lprojFile.localizableStringsFile {
                 for stringsFile in lprojFile.stringsFilesForXibNames(xibNames) {
-                    println("updating \(stringsFile.URL.path!)")
+                    print("updating \(stringsFile.URL.path!)")
                     stringsFile.updateValuesUsingLocalizableStringsFile(localizableStringsFile)
                     stringsFile.save()
                 }
             } else {
-                println("warning: Localizable.strings is not found in \(lprojFile.URL.path!)")
+                print("warning: Localizable.strings is not found in \(lprojFile.URL.path!)")
             }
         }
 
-        println("done.")
+        print("done.")
     }
 }

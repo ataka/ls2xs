@@ -6,7 +6,7 @@ class XibFile {
     
     init?(URL: NSURL) {
         self.URL = URL
-        self.name = URL.lastPathComponent?.stringByDeletingPathExtension ?? ""
+        self.name = URL.URLByDeletingPathExtension?.lastPathComponent ?? ""
         
         if (URL.pathExtension != "xib" && URL.pathExtension != "storyboard") || self.name.isEmpty {
             return nil
