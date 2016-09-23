@@ -7,8 +7,8 @@ class TargetTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let cwd = NSProcessInfo.processInfo().environment["MY_SOURCE_ROOT"]
-        let fileManager = NSFileManager()
+        let cwd = ProcessInfo.processInfo.environment["MY_SOURCE_ROOT"]
+        let fileManager = FileManager()
         fileManager.changeCurrentDirectoryPath(cwd!)
         
         target = Target(path: "DemoApp")
@@ -19,7 +19,7 @@ class TargetTests: XCTestCase {
     }
 
     func testBaseLprojFile() {
-        XCTAssertEqual(target.baseLprojFile!.URL.lastPathComponent!, "Base.lproj")
+        XCTAssertEqual(target.baseLprojFile!.URL.lastPathComponent, "Base.lproj")
     }
 
     func testLangLprojFiles() {

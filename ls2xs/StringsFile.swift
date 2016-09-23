@@ -1,21 +1,21 @@
 import Foundation
 
 class StringsFile {
-    let URL: NSURL
+    let URL: URL
     let name: String
     var dictionary: [String: String]
     
-    init?(URL: NSURL) {
+    init?(URL: URL) {
         self.URL = URL
-        self.name = URL.URLByDeletingPathExtension?.lastPathComponent ?? ""
-        self.dictionary = (NSDictionary(contentsOfURL: URL) as? [String: String]) ?? [String: String]()
+        self.name = URL.deletingPathExtension().lastPathComponent
+        self.dictionary = (NSDictionary(contentsOf: URL) as? [String: String]) ?? [String: String]()
         
         if URL.pathExtension != "strings" || self.name.isEmpty {
             return nil
         }
     }
 
-    func updateValuesUsingLocalizableStringsFile(localizableStringsFile: StringsFile) {
+    func updateValuesUsingLocalizableStringsFile(_ localizableStringsFile: StringsFile) {
         for (key, value) in dictionary {
             if let newValue = localizableStringsFile.dictionary[value] {
                 dictionary[key] = newValue
@@ -44,7 +44,7 @@ class StringsFile {
         
         do {
             // TODO: handle error
-            try string.writeToURL(URL, atomically: true, encoding: NSUTF8StringEncoding)
+            try string.write(to: URL, atomically: true, encoding: String.Encoding.utf8)
         } catch _ {
         }
     }

@@ -1,23 +1,23 @@
 import Foundation
 
 class XibFile {
-    let URL: NSURL
+    let URL: URL
     let name: String
     
-    init?(URL: NSURL) {
+    init?(URL: URL) {
         self.URL = URL
-        self.name = URL.URLByDeletingPathExtension?.lastPathComponent ?? ""
+        self.name = URL.deletingPathExtension().lastPathComponent
         
         if (URL.pathExtension != "xib" && URL.pathExtension != "storyboard") || self.name.isEmpty {
             return nil
         }
     }
     
-    func generateStringsInLprojFile(lprojFile: LprojFile) {
-        let destinationURL = lprojFile.URL.URLByAppendingPathComponent("\(name).strings")
-        let task = NSTask()
+    func generateStringsInLprojFile(_ lprojFile: LprojFile) {
+        let destinationURL = lprojFile.URL.appendingPathComponent("\(name).strings")
+        let task = Process()
         task.launchPath = "/usr/bin/ibtool"
-        task.arguments = [URL.path!, "--generate-strings-file", destinationURL.path!]
+        task.arguments = [URL.path, "--generate-strings-file", destinationURL.path]
         task.launch()
         task.waitUntilExit()
     }

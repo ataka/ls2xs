@@ -1,13 +1,13 @@
 import Foundation
 
 class LprojFile {
-    let URL: NSURL
+    let URL: URL
     let name: String
     
     var xibFiles: [XibFile] {
         var xibFiles =  [XibFile]()
         
-        for xibURL in NSFileManager.defaultManager().fileURLsInURL(URL) {
+        for xibURL in FileManager.default.fileURLsInURL(URL) {
             if let xibFile = XibFile(URL: xibURL) {
                 xibFiles.append(xibFile)
             }
@@ -19,7 +19,7 @@ class LprojFile {
     var stringsFiles: [StringsFile] {
         var stringsFiles =  [StringsFile]()
 
-        for xibURL in NSFileManager.defaultManager().fileURLsInURL(URL) {
+        for xibURL in FileManager.default.fileURLsInURL(URL) {
             if let stringsFile = StringsFile(URL: xibURL) {
                 stringsFiles.append(stringsFile)
             }
@@ -29,22 +29,22 @@ class LprojFile {
     }
     
     var localizableStringsFile: StringsFile? {
-        let stringsURL = URL.URLByAppendingPathComponent("Localizable.strings")
+        let stringsURL = URL.appendingPathComponent("Localizable.strings")
         return StringsFile(URL: stringsURL)
     }
     
-    class func baseLprojInURL(URL: NSURL) -> LprojFile? {
-        if let URL = NSFileManager.defaultManager().fileURLsInURL(URL).filter({ URL in URL.lastPathComponent == "Base.lproj" }).first {
+    class func baseLprojInURL(_ URL: URL) -> LprojFile? {
+        if let URL = FileManager.default.fileURLsInURL(URL).filter({ URL in URL.lastPathComponent == "Base.lproj" }).first {
             return LprojFile(URL: URL)
         } else {
             return nil
         }
     }
     
-    class func lprojFilesInURL(directoryURL: NSURL) -> [LprojFile] {
+    class func lprojFilesInURL(_ directoryURL: URL) -> [LprojFile] {
         var files = [LprojFile]()
         
-        for URL in NSFileManager.defaultManager().fileURLsInURL(directoryURL) {
+        for URL in FileManager.default.fileURLsInURL(directoryURL) {
             if let file = LprojFile(URL: URL) {
                 files.append(file)
             }
@@ -53,18 +53,18 @@ class LprojFile {
         return files
     }
     
-    init?(URL: NSURL) {
+    init?(URL: URL) {
         self.URL = URL
-        self.name = URL.URLByDeletingPathExtension?.lastPathComponent ?? ""
+        self.name = URL.deletingPathExtension().lastPathComponent
         
         if URL.pathExtension != "lproj" || self.name.isEmpty {
             return nil
         }
     }
     
-    func stringsFilesForXibNames(xibNames: [String]) -> [StringsFile] {
+    func stringsFilesForXibNames(_ xibNames: [String]) -> [StringsFile] {
         return stringsFiles.filter(){ stringsFile in
-            xibNames.contains((stringsFile.URL.URLByDeletingPathExtension?.lastPathComponent)!)
+            xibNames.contains((stringsFile.URL.deletingPathExtension().lastPathComponent))
         }
     }
 }

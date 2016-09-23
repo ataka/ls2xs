@@ -7,13 +7,13 @@ class LprojFileTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        let cwd = NSProcessInfo.processInfo().environment["MY_SOURCE_ROOT"]
-        let fileManager = NSFileManager()
+        let cwd = ProcessInfo.processInfo.environment["MY_SOURCE_ROOT"]
+        let fileManager = FileManager()
         fileManager.changeCurrentDirectoryPath(cwd!)
 
-        let path = NSFileManager.defaultManager().currentDirectoryPath
-        let URL = NSURL(fileURLWithPath: path).URLByAppendingPathComponent("DemoApp/Base.lproj")
-        lprojFile = LprojFile(URL: URL)
+        let path = FileManager.default.currentDirectoryPath
+        let anURL = URL(fileURLWithPath: path).appendingPathComponent("DemoApp/Base.lproj")
+        lprojFile = LprojFile(URL: anURL)
     }
 
     func testXibFiles() {
