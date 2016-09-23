@@ -1,19 +1,18 @@
 import Foundation
 
-extension NSFileManager {
-    func fileURLsInURL(URL: NSURL) -> [NSURL] {
-        let fileManager = NSFileManager.defaultManager()
-        let enumerator = fileManager.enumeratorAtURL(URL, includingPropertiesForKeys: [], options: .SkipsHiddenFiles) { (URL: NSURL, error: NSError) in
+extension FileManager {
+    func fileURLsInURL(_ URL: URL) -> [URL] {
+        let fileManager = FileManager.default
+        let enumerator = fileManager.enumerator(at: URL, includingPropertiesForKeys: [], options: .skipsHiddenFiles) { (URL: URL, error: Error) in
             print("error: \(error)")
             return false
         }
 
-        var URLs = [NSURL]()
-        while let URL = enumerator?.nextObject() as? NSURL {
+        var URLs = [URL]
+        while let URL = enumerator?.nextObject() as? URL {
             URLs.append(URL)
         }
 
         return URLs
-
     }
 }

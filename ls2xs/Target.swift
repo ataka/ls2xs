@@ -1,10 +1,10 @@
 import Foundation
 
 class Target {
-    let URL: NSURL!
+    let URL: URL!
 
     var baseLprojFile: LprojFile! {
-        if let URL = NSFileManager.defaultManager().fileURLsInURL(URL).filter({ URL in URL.lastPathComponent == "Base.lproj" }).first {
+        if let URL = FileManager.default.fileURLsInURL(URL).filter({ URL in URL.lastPathComponent == "Base.lproj" }).first {
             return LprojFile(URL: URL)
         } else {
             return nil
@@ -14,7 +14,7 @@ class Target {
     var langLprojFiles: [LprojFile] {
         var files = [LprojFile]()
         
-        for lprojURL in NSFileManager.defaultManager().fileURLsInURL(URL) {
+        for lprojURL in FileManager.default.fileURLsInURL(URL) {
             if let file = LprojFile(URL: lprojURL) {
                 if file.URL != baseLprojFile.URL {
                     files.append(file)
@@ -26,8 +26,8 @@ class Target {
     }
 
     init?(path: String) {
-        let currentPath = NSFileManager.defaultManager().currentDirectoryPath
-        let inputPath = NSURL(string: currentPath)?.URLByAppendingPathComponent(path)
+        let currentPath = FileManager.default.currentDirectoryPath
+        let inputPath = Foundation.URL(string: currentPath)?.appendingPathComponent(path)
         URL = inputPath
 
         if URL == nil {
@@ -36,7 +36,7 @@ class Target {
         }
 
         if baseLprojFile == nil {
-            print("error: could not find Base.lproj in \(URL.path!)")
+            print("error: could not find Base.lproj in \(URL.path)")
             return nil
         }
     }
@@ -45,7 +45,7 @@ class Target {
         let xibNames = baseLprojFile.xibFiles.map({ $0.name })
         for xibFile in baseLprojFile.xibFiles {
             for lprojFile in langLprojFiles {
-                print("generating .strings for \(lprojFile.URL.path!)/\(xibFile.name).strings")
+                print("generating .strings for \(lprojFile.URL.path)/\(xibFile.name).strings")
                 xibFile.generateStringsInLprojFile(lprojFile)
             }
         }
@@ -53,12 +53,12 @@ class Target {
         for lprojFile in langLprojFiles {
             if let localizableStringsFile = lprojFile.localizableStringsFile {
                 for stringsFile in lprojFile.stringsFilesForXibNames(xibNames) {
-                    print("updating \(stringsFile.URL.path!)")
+                    print("updating \(stringsFile.URL.path)")
                     stringsFile.updateValuesUsingLocalizableStringsFile(localizableStringsFile)
                     stringsFile.save()
                 }
             } else {
-                print("warning: Localizable.strings is not found in \(lprojFile.URL.path!)")
+                print("warning: Localizable.strings is not found in \(lprojFile.URL.path)")
             }
         }
 

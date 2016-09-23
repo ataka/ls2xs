@@ -8,14 +8,14 @@ class StringsFileTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let cwd = NSProcessInfo.processInfo().environment["MY_SOURCE_ROOT"]
-        let fileManager = NSFileManager()
+        let cwd = ProcessInfo.processInfo.environment["MY_SOURCE_ROOT"]
+        let fileManager = FileManager()
         fileManager.changeCurrentDirectoryPath(cwd!)
 
-        let directoryPath = NSFileManager.defaultManager().currentDirectoryPath
-        let directoryURL = NSURL(fileURLWithPath: directoryPath).URLByAppendingPathComponent("DemoApp")
-        localizableStringsFile = StringsFile(URL: directoryURL.URLByAppendingPathComponent("en.lproj/Localizable.strings"))
-        xibStringsFile = StringsFile(URL: directoryURL.URLByAppendingPathComponent("en.lproj/Main.strings"))
+        let directoryPath = FileManager.default.currentDirectoryPath
+        let directoryURL = URL(fileURLWithPath: directoryPath).appendingPathComponent("DemoApp")
+        localizableStringsFile = StringsFile(URL: directoryURL.appendingPathComponent("en.lproj/Localizable.strings"))
+        xibStringsFile = StringsFile(URL: directoryURL.appendingPathComponent("en.lproj/Main.strings"))
     }
 
     func testUpdate() {
