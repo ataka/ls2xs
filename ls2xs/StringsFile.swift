@@ -24,7 +24,7 @@ class StringsFile {
     }
 
     func save() {
-        let strings = dictionary.reduce([], { (var result, dic) -> [String] in
+        let strings = dictionary.reduce([String](), { (result, dic) in
             let escapedValue = String(dic.value.characters.flatMap { character -> [Character] in
                 switch character {
                 case "\n": return ["\\", "n"]
@@ -34,7 +34,9 @@ class StringsFile {
                 default:   return [character]
                 }
             })
-            result.append("\"\(dic.key)\" = \"\(escapedValue)\";\n")
+            var acc = result
+            acc.append("\"\(dic.key)\" = \"\(escapedValue)\";\n")
+            return acc
         }).sorted()
         
         do {
