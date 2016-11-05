@@ -24,10 +24,8 @@ class StringsFile {
     }
 
     func save() {
-        var string = ""
-        
-        for (key, value) in dictionary {
-            let escapedValue = String(value.characters.flatMap { character -> [Character] in
+        let strings = dictionary.reduce([], { (var result, dic) -> [String] in
+            let escapedValue = String(dic.value.characters.flatMap { character -> [Character] in
                 switch character {
                 case "\n": return ["\\", "n"]
                 case "\r": return ["\\", "r"]
@@ -36,14 +34,12 @@ class StringsFile {
                 default:   return [character]
                 }
             })
-
-            
-            string += "\"\(key)\" = \"\(escapedValue)\";\n"
-        }
+            result.append("\"\(dic.key)\" = \"\(escapedValue)\";\n")
+        }).sorted()
         
         do {
             // TODO: handle error
-            try string.write(to: URL, atomically: true, encoding: String.Encoding.utf8)
+            try strings.joined().write(to: URL, atomically: true, encoding: String.Encoding.utf8)
         } catch _ {
         }
     }
