@@ -23,5 +23,6 @@ class StringsFileTests: XCTestCase {
 
         XCTAssertEqual(xibStringsFile.dictionary["xUH-o8-DGc.text"]!, "Hello")
         XCTAssertEqual(xibStringsFile.dictionary["uZj-A7-ihc.normalTitle"]!, "Get started")
+        XCTAssertEqual(xibStringsFile.dictionary["zjA-Rl-7jE.text"]!, "This is a \"quoted\" text.")
     }
 }

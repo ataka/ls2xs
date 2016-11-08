@@ -1,6 +1,3 @@
-
-/* Class = "UIButton"; normalTitle = "getstarted"; ObjectID = "uZj-A7-ihc"; */
-"uZj-A7-ihc.normalTitle" = "getstarted";
-
-/* Class = "UILabel"; text = "hello"; ObjectID = "xUH-o8-DGc"; */
-"xUH-o8-DGc.text" = "hello";
+"xUH-o8-DGc.text" = "Hello";
+"zjA-Rl-7jE.text" = "This is a \"quoted\" text.";
+"uZj-A7-ihc.normalTitle" = "Get started";

@@ -27,19 +27,18 @@ class StringsFile {
         var string = ""
         
         for (key, value) in dictionary {
-            let escapedValue: String? = Optional(value).map { character in
+            let escapedValue = String(value.characters.flatMap { character -> [Character] in
                 switch character {
-                case "\"": return "\\n"
-                case "\r": return "\\r"
-                case "\\": return "\\\\"
-                case "\"": return "\\\""
-                default:   return String(character)
+                case "\n": return ["\\", "n"]
+                case "\r": return ["\\", "r"]
+                case "\\": return ["\\", "\\"]
+                case "\"": return ["\\", "\""]
+                default:   return [character]
                 }
-            }
+            })
+
             
-            if let value = escapedValue {
-                string += "\"\(key)\" = \"\(value)\";\n"
-            }
+            string += "\"\(key)\" = \"\(escapedValue)\";\n"
         }
         
         do {
