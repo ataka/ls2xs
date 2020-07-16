@@ -1,9 +1,18 @@
 DSTROOT=/tmp/ls2xs.dst
 
-prefix_install:
-	xcodebuild install -scheme ls2xs DSTROOT=$(DSTROOT)
-	mkdir -p $(PREFIX)/bin
-	cp -f $(DSTROOT)/usr/local/bin/ls2xs $(PREFIX)/bin/
+.PHONY : compile
+compile:
+	swift build --disable-sandbox -c release
 
-test:
-	set -o pipefail && xcodebuild test -scheme ls2xs | xcpretty -c -r junit -o build/test-report.xml
+.PHONY : prefix_install
+prefix_install: compile
+	sudo mkdir -p $(PREFIX)/bin
+	sudo cp -p ./.build/release/ls2xsR $(PREFIX)/bin
+
+.PHONY : xcodeproj
+xcodeproj:
+	swift package generate-xcodeproj
+
+.PHONY : test
+# test:
+#	set -o pipefail && xcodebuild test -scheme ls2xs | xcpretty -c -r junit -o build/test-report.xml
