@@ -33,10 +33,11 @@ struct Ls2Xs: ParsableCommand {
         let langs = Array(stringFiles.keys)
         baseLprojs.forEach { baseLproj in
             baseLproj.ibFiles.forEach { ibFile in
-                print("generating .strings for \(ibFile.url.path)")
-                let baseStringsFile = ibFile.makeBaseStringsFile(name: ibFile.name)
-                baseStringsFile.removeFile()
-                guard !baseStringsFile.keyValues.isEmpty else { return }
+                print("generating *.strings file for \(ibFile.url.path)")
+                let baseStringsFile = BaseStringsFile.make(ibFile: ibFile)
+                defer { baseStringsFile.removeFile() }
+
+                guard !baseStringsFile.isEmpty else { return }
                 langs.forEach { lang in
                     guard let localizableStringsFile = stringFiles[lang] else { fatalError("Failed to find LANG in stringFiles: \(lang)") }
                     var langStringsFile = LangStringsFile(lang: lang, baseStringsFile: baseStringsFile)
@@ -57,35 +58,6 @@ struct Localize {
 }
 struct Localized {
     typealias Value = String
-}
-
-// MARK: BaseStringsFile
-
-final class BaseStringsFile: CustomStringConvertible {
-    let url: URL
-    let fullname: String
-    var keyValues: [IbFile.ObjectId: Localize.Key] = [:]
-
-    init(ibFileUrl: URL, name: String) {
-        let fullname = "\(name).strings"
-        url = ibFileUrl
-            .deletingLastPathComponent()
-            .appendingPathComponent(fullname)
-        self.fullname = fullname
-    }
-
-    var description: String {
-        url.path
-    }
-
-    func removeFile() {
-        do {
-            try FileManager.default.removeItem(at: url)
-        } catch {
-            fatalError("failed to remove file: \(url)")
-        }
-        return
-    }
 }
 
 // MARK: LangStringsFile
