@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Strings file in `<LANG>.lproj` directory, with key-value pairs of `IbFile.ObjectId` and `Localized.Value`
 struct LangStringsFile {
     let url: URL
     let lang: String
@@ -22,18 +23,18 @@ struct LangStringsFile {
     }
 
     mutating func update(from baseStringsFile: BaseStringsFile, with localizableString: LocalizableStringsFile) {
-        baseStringsFile.keyValues.forEach { (ibKey, localizeKey) in
+        baseStringsFile.keyValues.forEach { (objectId, localizeKey) in
             if let localizedValue = localizableString.keyValues[localizeKey] {
-                keyValues[ibKey] = localizedValue
+                keyValues[objectId] = localizedValue
             } else {
-                keyValues[ibKey] = localizeKey
+                keyValues[objectId] = localizeKey
             }
         }
     }
 
     func save() {
-        let output = keyValues.map({ ibKey, localizedValue in
-            #""\#(ibKey)" = "\#(localizedValue)";\#n"#
+        let output = keyValues.map({ objectId, localizedValue in
+            #""\#(objectId)" = "\#(localizedValue)";\#n"#
             })
             .sorted()
             .joined()
@@ -43,7 +44,7 @@ struct LangStringsFile {
             try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
             try output.write(to: url, atomically: true, encoding: .utf8)
         } catch {
-            fatalError("Howdy")
+            fatalError("Failed to save strings file in <LANG>.lproj: \(url)")
         }
     }
 }
