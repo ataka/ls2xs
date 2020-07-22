@@ -6,29 +6,39 @@ struct Ls2Xs: ParsableCommand {
     var path: String
 
     mutating func run() {
+        let (stringFiles, baseLprojs) = collectingLocalizableStringsFilesAndBaseLprojs(in: path)
+        makeLangStringsFiles(stringFiles: stringFiles, baseLprojs: baseLprojs)
+    }
+
+    private func collectingLocalizableStringsFilesAndBaseLprojs(in path: String) -> ([String: LocalizableStringsFile], [BaseLproj]) {
         let currentPath = FileManager.default.currentDirectoryPath
-        guard let rootUrl = URL(string: currentPath)?.appendingPathComponent(path) else { fatalError("hoge") }
+        guard let rootUrl = URL(string: currentPath)?.appendingPathComponent(path) else {
+            fatalError("Failed to find the path: \(path)")
+        }
 
         var stringFiles: [String: LocalizableStringsFile] = [:]
-        var baseLprojFiles: [BaseLprojFile] = []
+        var baseLprojs: [BaseLproj] = []
         FileManager.default.fileURLs(in: rootUrl).forEach() { url in
             if let stringFile = LocalizableStringsFile(url: url) {
                 stringFiles[stringFile.lang] = stringFile
             }
-            if let baseLprojFile = BaseLprojFile(url: url) {
-                baseLprojFiles.append(baseLprojFile)
+            if let baseLprojFile = BaseLproj(url: url) {
+                baseLprojs.append(baseLprojFile)
             }
         }
+        return (stringFiles, baseLprojs)
+    }
 
+    private func makeLangStringsFiles(stringFiles: [String: LocalizableStringsFile], baseLprojs: [BaseLproj]) {
         let langs = Array(stringFiles.keys)
-        baseLprojFiles.forEach { baseLproj in
+        baseLprojs.forEach { baseLproj in
             baseLproj.ibFiles.forEach { ibFile in
                 print("generating .strings for \(ibFile.url.path)")
                 let baseStringsFile = ibFile.makeBaseStringsFile(name: ibFile.name)
                 baseStringsFile.removeFile()
                 guard !baseStringsFile.keyValues.isEmpty else { return }
                 langs.forEach { lang in
-                    guard let localizableStringsFile = stringFiles[lang] else { fatalError("Oh, no") }
+                    guard let localizableStringsFile = stringFiles[lang] else { fatalError("Failed to find LANG in stringFiles: \(lang)") }
                     var langStringsFile = LangStringsFile(lang: lang, baseStringsFile: baseStringsFile)
                     langStringsFile.update(from: baseStringsFile, with: localizableStringsFile)
                     langStringsFile.save()
@@ -40,9 +50,9 @@ struct Ls2Xs: ParsableCommand {
 
 Ls2Xs.main()
 
-// MARK: - BaseLprojFile
+// MARK: - BaseLproj
 
-final class BaseLprojFile {
+final class BaseLproj {
     let url: URL
 
     init?(url: URL) {
