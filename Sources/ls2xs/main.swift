@@ -50,17 +50,3 @@ struct Ls2Xs: ParsableCommand {
 }
 
 Ls2Xs.main()
-
-// MARK: - FileManager
-
-extension FileManager {
-    func fileURLs(in url: URL) -> [URL] {
-        let enumerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [], options: .skipsHiddenFiles)
-
-        var urls: [URL] = []
-        while let url = enumerator?.nextObject() as? URL {
-            urls.append(url)
-        }
-        return urls
-    }
-}
