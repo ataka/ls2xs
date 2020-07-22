@@ -2,6 +2,9 @@ import Foundation
 import ArgumentParser
 
 struct Ls2Xs: ParsableCommand {
+    static let configuration = CommandConfiguration(abstract: "A command line tool that updates .strings of .xib and .storyboard using Localizable.strings.",
+                                                    version: Version.value)
+
     @Argument()
     var path: String
 
