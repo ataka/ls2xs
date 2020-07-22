@@ -50,64 +50,6 @@ struct Ls2Xs: ParsableCommand {
 
 Ls2Xs.main()
 
-// MARK: - IbFile
-
-protocol IbFile {
-    typealias Key = String
-    var url: URL { get }
-    /// File name without  extension
-    var name: String { get }
-    func makeBaseStringsFile(name: String) -> BaseStringsFile
-}
-
-extension IbFile {
-    func makeBaseStringsFile(name: String) -> BaseStringsFile {
-        generate(from: self, to: "\(name).strings")
-        let baseStringFile = BaseStringsFile(ibFileUrl: url, name: name)
-        baseStringFile.keyValues = { url in
-            guard let keyValues = NSDictionary(contentsOf: url) as? [IbFile.Key: Localize.Key] else { fatalError("huga") }
-            return keyValues
-        }(baseStringFile.url)
-        return baseStringFile
-    }
-
-    private func generate(from ibFile: IbFile, to baseStringsFileName: String) {
-        let generateStringsFile: Process = { task, ibFileUrl, baseStringsFileUrl in
-            task.launchPath = "/usr/bin/ibtool"
-            task.arguments = [
-                ibFileUrl.path,
-                "--generate-strings-file",
-                baseStringsFileUrl.path,
-            ]
-            return task
-        }(Process(), ibFile.url, ibFile.url.deletingLastPathComponent().appendingPathComponent(baseStringsFileName))
-        generateStringsFile.launch()
-        generateStringsFile.waitUntilExit()
-    }
-}
-
-struct XibFile: IbFile {
-    let url: URL
-    let name: String
-
-    init?(url: URL) {
-        guard url.pathExtension == "xib" else { return nil }
-        self.url = url
-        name = url.deletingPathExtension().lastPathComponent
-    }
-}
-
-struct StoryboardFile: IbFile {
-    let url: URL
-    let name: String
-
-    init?(url: URL) {
-        guard url.pathExtension == "storyboard" else { return nil }
-        self.url = url
-        name = url.deletingPathExtension().lastPathComponent
-    }
-}
-
 // MARK: - StringsFiles
 
 struct Localize {
@@ -122,7 +64,7 @@ struct Localized {
 final class BaseStringsFile: CustomStringConvertible {
     let url: URL
     let fullname: String
-    var keyValues: [IbFile.Key: Localize.Key] = [:]
+    var keyValues: [IbFile.ObjectId: Localize.Key] = [:]
 
     init(ibFileUrl: URL, name: String) {
         let fullname = "\(name).strings"
@@ -151,7 +93,7 @@ final class BaseStringsFile: CustomStringConvertible {
 struct LangStringsFile {
     let url: URL
     let lang: String
-    var keyValues: [IbFile.Key: Localized.Value] = [:]
+    var keyValues: [IbFile.ObjectId: Localized.Value] = [:]
 
     init(lang: String, baseStringsFile: BaseStringsFile) {
         url = baseStringsFile.url
