@@ -22,8 +22,8 @@ struct Ls2Xs: ParsableCommand {
             if let stringFile = LocalizableStringsFile(url: url) {
                 stringFiles[stringFile.lang] = stringFile
             }
-            if let baseLprojFile = BaseLproj(url: url) {
-                baseLprojs.append(baseLprojFile)
+            if let baseLproj = BaseLproj(url: url) {
+                baseLprojs.append(baseLproj)
             }
         }
         return (stringFiles, baseLprojs)
@@ -49,23 +49,6 @@ struct Ls2Xs: ParsableCommand {
 }
 
 Ls2Xs.main()
-
-// MARK: - BaseLproj
-
-final class BaseLproj {
-    let url: URL
-
-    init?(url: URL) {
-        guard url.lastPathComponent == "Base.lproj" else { return nil }
-        self.url = url
-    }
-
-    var ibFiles: [IbFile] {
-        FileManager.default.fileURLs(in: url).compactMap {
-            XibFile(url: $0) ?? StoryboardFile(url: $0)
-        }
-    }
-}
 
 // MARK: - IbFile
 
