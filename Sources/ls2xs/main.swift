@@ -51,49 +51,6 @@ struct Ls2Xs: ParsableCommand {
 
 Ls2Xs.main()
 
-// MARK: - StringsFiles
-
-struct Localize {
-    typealias Key = String
-}
-struct Localized {
-    typealias Value = String
-}
-
-// MARK: LocalizableStringsFile
-
-final class LocalizableStringsFile {
-    let url: URL
-    let lang: String
-    private(set) var keyValues: [Localize.Key: Localized.Value]
-
-    init?(url: URL) {
-        let lang = url.deletingLastPathComponent().deletingPathExtension().lastPathComponent
-        guard url.lastPathComponent == "Localizable.strings"
-            && !lang.isEmpty,
-            let keyValues = Self.readKeyValues(in: url) else { return nil }
-
-        self.url = url
-        self.lang = lang
-        self.keyValues = keyValues
-    }
-
-    private static func readKeyValues(in url: URL) -> [Localize.Key: Localized.Value]? {
-        guard let rawKeyValues = NSDictionary(contentsOf: url) as? [Localize.Key: Localized.Value] else { return nil }
-        return rawKeyValues.mapValues { value in
-            String(value.flatMap { (char: Character) -> [Character] in
-                switch char {
-                case "\n": return ["\\", "n"]
-                case "\r": return ["\\", "r"]
-                case "\\": return ["\\", "\\"]
-                case "\"": return ["\\", "\""]
-                default:   return [char]
-                }
-            })
-        }
-    }
-}
-
 // MARK: - FileManager
 
 extension FileManager {
