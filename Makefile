@@ -1,5 +1,3 @@
-DSTROOT=/tmp/ls2xs.dst
-
 .PHONY : compile
 compile:
 	swift build --disable-sandbox -c release
@@ -7,7 +5,7 @@ compile:
 .PHONY : prefix_install
 prefix_install: compile
 	sudo mkdir -p $(PREFIX)/bin
-	sudo cp -p ./.build/release/ls2xsR $(PREFIX)/bin
+	sudo cp -p ./.build/release/ls2xs $(PREFIX)/bin
 
 .PHONY : xcodeproj
 xcodeproj:

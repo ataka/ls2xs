@@ -30,7 +30,7 @@ brew install ishkawa/formulae/ls2xs
 ``` shellsession
 $ git pull https://github.com/ataka/ls2xs.git
 $ cd ls2xs
-$ make prefix_install
+$ PREFIX=/usr/local make prefix_install
 ```
 
 ## Usage
