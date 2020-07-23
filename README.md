@@ -19,11 +19,11 @@ A command line tool that updates .strings of .xib and .storyboard using Localiza
 
 ## Installation
 
-<!--
+### Brew
+
 ```
-brew install ishkawa/formulae/ls2xs
+$ brew install ataka/formulae/ls2xs
 ```
--->
 
 ### Make
 
