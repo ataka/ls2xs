@@ -14,3 +14,7 @@ xcodeproj:
 .PHONY : test
 # test:
 #	set -o pipefail && xcodebuild test -scheme ls2xs | xcpretty -c -r junit -o build/test-report.xml
+
+.PHONY : prepare_release
+prepare_release:
+	scripts/prepare_release.sh
