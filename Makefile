@@ -19,4 +19,5 @@ xcodeproj:
 prepare_release:
 	scripts/prepare_release.sh
 .PHONY : prepare_hotfix
+prepare_hotfix:
 	scripts/prepare_hotfix.sh
