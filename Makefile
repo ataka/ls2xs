@@ -4,8 +4,8 @@ compile:
 
 .PHONY : prefix_install
 prefix_install: compile
-	sudo mkdir -p $(PREFIX)/bin
-	sudo cp -p ./.build/release/ls2xs $(PREFIX)/bin
+	mkdir -p $(PREFIX)/bin
+	cp -p ./.build/release/ls2xs $(PREFIX)/bin
 
 .PHONY : xcodeproj
 xcodeproj:
