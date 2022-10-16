@@ -5,7 +5,7 @@ struct Ls2Xs: ParsableCommand {
     static let configuration = CommandConfiguration(abstract: "A command line tool that updates .strings of .xib and .storyboard using Localizable.strings.",
                                                     version: Version.value)
 
-    @Argument()
+    @Argument(help: "Path to target directory")
     var path: String
 
     @Option(name: .shortAndLong, help: "File name of *.strings file.")
