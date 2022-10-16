@@ -4,7 +4,7 @@
         <img alt="GitHub license" src="https://img.shields.io/github/license/ataka/ls2xs"/>
     </a>
     <a href="https://docs.swift.org/swift-book/index.html">
-        <img alt="Swift 5.2" src="https://img.shields.io/badge/Swift-5.2-orange.svg"/>
+        <img alt="Swift 5.6" src="https://img.shields.io/badge/Swift-5.6-orange.svg"/>
     </a>
     <a href="https://github.com/ataka/ls2xs/releases">
         <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/ataka/ls2xs">
@@ -44,8 +44,8 @@ $ PREFIX=/usr/local make prefix_install
 /usr/local/bin/ls2xs $TARGET_PATH
 ```
 
-`ls2xc` generates .strings for .xib and .storyboard using `ibtool --generate-strings-file`.
-Then, `ls2xc` replaces value of .strings with value of `Localizable.strings` if it matches key of `Localizable.strings`.
+`ls2xs` generates .strings for .xib and .storyboard using `ibtool --generate-strings-file`.
+Then, `ls2xs` replaces value of .strings with value of `Localizable.strings` if it matches key of `Localizable.strings`.
 
 
 ## Example

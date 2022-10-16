@@ -20,9 +20,9 @@ final class LocalizableStringsFile {
     let lang: String
     private(set) var keyValues: [Localize.Key: Localized.Value]
 
-    init?(url: URL) {
+    init?(name: String, url: URL) {
         let lang = url.deletingLastPathComponent().deletingPathExtension().lastPathComponent
-        guard url.lastPathComponent == "Localizable.strings"
+        guard url.lastPathComponent == name
             && !lang.isEmpty,
             let keyValues = Self.readKeyValues(in: url) else { return nil }
 
