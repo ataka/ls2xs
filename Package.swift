@@ -12,7 +12,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-argument-parser.git", from: "0.2.0"),
     ],
     targets: [
-        .target(
+        .executableTarget(
             name: "ls2xs",
             dependencies: [.product(name: "ArgumentParser", package: "swift-argument-parser")]),
         .testTarget(
