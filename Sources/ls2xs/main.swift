@@ -8,6 +8,9 @@ struct Ls2Xs: ParsableCommand {
     @Argument()
     var path: String
 
+    @Option(name: .shortAndLong, help: "File name of *.strings file.")
+    var stringsFile: String = "Localizable.strings"
+
     mutating func run() {
         let (stringFiles, baseLprojs) = collectingLocalizableStringsFilesAndBaseLprojs(in: path)
         makeLangStringsFiles(stringFiles: stringFiles, baseLprojs: baseLprojs)
@@ -20,7 +23,7 @@ struct Ls2Xs: ParsableCommand {
         var stringFiles: [String: LocalizableStringsFile] = [:]
         var baseLprojs: [BaseLproj] = []
         fileManager.fileURLs(in: rootUrl).forEach() { url in
-            if let stringFile = LocalizableStringsFile(url: url) {
+            if let stringFile = LocalizableStringsFile(name: stringsFile, url: url) {
                 stringFiles[stringFile.lang] = stringFile
             }
             if let baseLproj = BaseLproj(url: url) {
