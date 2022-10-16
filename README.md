@@ -4,7 +4,7 @@
         <img alt="GitHub license" src="https://img.shields.io/github/license/ataka/ls2xs"/>
     </a>
     <a href="https://docs.swift.org/swift-book/index.html">
-        <img alt="Swift 5.2" src="https://img.shields.io/badge/Swift-5.2-orange.svg"/>
+        <img alt="Swift 5.6" src="https://img.shields.io/badge/Swift-5.6-orange.svg"/>
     </a>
     <a href="https://github.com/ataka/ls2xs/releases">
         <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/ataka/ls2xs">
