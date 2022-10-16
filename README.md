@@ -44,8 +44,8 @@ $ PREFIX=/usr/local make prefix_install
 /usr/local/bin/ls2xs $TARGET_PATH
 ```
 
-`ls2xc` generates .strings for .xib and .storyboard using `ibtool --generate-strings-file`.
-Then, `ls2xc` replaces value of .strings with value of `Localizable.strings` if it matches key of `Localizable.strings`.
+`ls2xs` generates .strings for .xib and .storyboard using `ibtool --generate-strings-file`.
+Then, `ls2xs` replaces value of .strings with value of `Localizable.strings` if it matches key of `Localizable.strings`.
 
 
 ## Example
