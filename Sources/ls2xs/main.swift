@@ -5,8 +5,11 @@ struct Ls2Xs: ParsableCommand {
     static let configuration = CommandConfiguration(abstract: "A command line tool that updates .strings of .xib and .storyboard using Localizable.strings.",
                                                     version: Version.value)
 
-    @Argument()
+    @Argument(help: "Path to target directory")
     var path: String
+
+    @Option(name: .shortAndLong, help: "File name of *.strings file.")
+    var stringsFile: String = "Localizable.strings"
 
     mutating func run() {
         let (stringFiles, baseLprojs) = collectingLocalizableStringsFilesAndBaseLprojs(in: path)
@@ -20,7 +23,7 @@ struct Ls2Xs: ParsableCommand {
         var stringFiles: [String: LocalizableStringsFile] = [:]
         var baseLprojs: [BaseLproj] = []
         fileManager.fileURLs(in: rootUrl).forEach() { url in
-            if let stringFile = LocalizableStringsFile(url: url) {
+            if let stringFile = LocalizableStringsFile(name: stringsFile, url: url) {
                 stringFiles[stringFile.lang] = stringFile
             }
             if let baseLproj = BaseLproj(url: url) {
