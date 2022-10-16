@@ -14,14 +14,12 @@ struct Ls2Xs: ParsableCommand {
     }
 
     private func collectingLocalizableStringsFilesAndBaseLprojs(in path: String) -> ([String: LocalizableStringsFile], [BaseLproj]) {
-        let currentPath = FileManager.default.currentDirectoryPath
-        guard let rootUrl = URL(string: currentPath)?.appendingPathComponent(path) else {
-            fatalError("Failed to find the path: \(path)")
-        }
+        let fileManager = FileManager.default
+        let rootUrl = URL(fileURLWithPath: fileManager.currentDirectoryPath).appendingPathComponent(path)
 
         var stringFiles: [String: LocalizableStringsFile] = [:]
         var baseLprojs: [BaseLproj] = []
-        FileManager.default.fileURLs(in: rootUrl).forEach() { url in
+        fileManager.fileURLs(in: rootUrl).forEach() { url in
             if let stringFile = LocalizableStringsFile(url: url) {
                 stringFiles[stringFile.lang] = stringFile
             }
